@@ -24016,16 +24016,15 @@
       <workItem from="1524875821576" duration="4251000" />
       <workItem from="1525095374791" duration="4267000" />
       <workItem from="1525099736326" duration="6552000" />
-      <workItem from="1525109508981" duration="3080000" />
+      <workItem from="1525109508981" duration="3678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22176000" />
+    <option name="totallyTimeSpent" value="22774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="861" y="99" width="2254" height="1000" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
