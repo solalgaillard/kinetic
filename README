@@ -1,0 +1,9 @@
+#Here are some of the commands often used
+
+npx webpack --config webpack.config.js
+
+npx webpack --watch
+
+./gradlew bootRun
+
+chrome://flags/#allow-insecure-localhost
