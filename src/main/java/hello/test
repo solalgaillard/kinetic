@@ -1,0 +1,16 @@
+curl --request POST   --url 'https://localhost/authenticate' --header  'content-type: application/json'   --data '{"username":"test.account@signup.com", "password":"Solgai#06"}' -k
+{"timestamp":"2018-06-01T17:42:10.699+0000","status":400,"error":"Bad Request",
+"errors":[
+{"codes":["typeMismatch.userCredentials.id","typeMismatch.id","typeMismatch"],
+"arguments":[{"codes":["userCredentials.id","id"],"arguments":null,"defaultMessage":"id","code":"id"}],"defaultMessage":"Failed to convert value of type 'null' to required type 'long'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [null] to type [long] for value 'null'; nested exception is java.lang.IllegalArgumentException: A null value cannot be assigned to a primitive type","objectName":"userCredentials","field":"id","rejectedValue":null,"bindingFailure":true,"code":"typeMismatch"}],"message":"Validation failed for obSolal-GailSolal-Gaillard:kinetic soSolal-GailSolalSolal-Gaillard:kinetic solalgaillarSolal-Gaillard:kinetic solalgaillarSolal-Gaillard:kinetSolal-Gaillard:kinetic solalgaSolal-GailSolal-Gaillard:kinetic solalgaillard$
+
+
+
+
+
+
+curl --request POST \
+  --url 'https://kineticexpress.auth0.com/oauth/token' \
+  --header 'content-type: application/json' \
+  --data '{"grant_type":"password", "username":"test.account@signup.com", "password":"Solgai#06", "client_id": "7bug4gdhtEeo77gXDz0dBl1KBjVr5I1O", "client_secret": "A9_2PNqixCjxJ7hlGIJn8licpeiOX0-UTRiHcV7LNuCq3dPtHhYN9-_yQJ670Afc"
+ }'
