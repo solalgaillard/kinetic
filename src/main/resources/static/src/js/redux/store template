@@ -1,0 +1,572 @@
+                <Route path="/home/settings" component={HomeSettings} />
+                <Route path="/search/list/term" component={SearchList} />
+                <Route path="/list/list-id/feed" component={ListFeed} />
+                <Route path="/inbox" component={Inbox} />
+
+{
+  "user": {
+    "userUUID": "UUID",
+    "userToken": "abc",
+    "userName": "Paul",
+    "userLists": {
+      "createList": "false",
+      "lists": [
+        {
+          "listUUID": "uuid",
+          "name": "Vienna 1910",
+          "description": "blah",
+          "relation": "admin",
+          "settings": {
+            "display": "false",
+            "invitedAsAdmin": [
+              {
+                "userUUID": "UUID",
+                "userName": "Jean"
+              }
+            ],
+            "invitedToFollow": [
+              {
+                "userUUID": "UUID",
+                "userName": "Jean"
+              }
+            ],
+            "listViewableBy": "all",
+            "feedViewableBy": "all"
+          }
+        },
+        {
+          "listUUID": "uuid",
+          "name": "Truc",
+          "description": "blah",
+          "relation": "shared",
+          "settings": {
+            "display": "false",
+            "invitedAsAdmin": [
+              {
+                "userUUID": "UUID",
+                "userName": "Jean"
+              }
+            ],
+            "invitedToFollow": [
+              {
+                "userUUID": "UUID",
+                "userName": "Jean"
+              }
+            ],
+            "listViewableBy": "all",
+            "feedViewableBy": "all"
+          }
+        }
+      ]
+    },
+    "following": [
+      {
+        "UUID": "uuid",
+        "name": "Black"
+      }
+    ],
+    "followers": [
+      {
+        "UUID": "uuid",
+        "name": "Black"
+      }
+    ],
+    "blocked": [
+      {
+        "UUID": "uuid",
+        "name": "Black"
+      }
+    ],
+    "inboxCount": "32",
+    "settings": {
+      "display": "false",
+      "userPicture": "url",
+      "pictureAlignment": [
+        "x",
+        "y",
+        "z"
+      ]
+    }
+  },
+
+  "searchBarTitle": "search references / ~lists / #hashtags",
+
+  "homeFeed": {
+    "post": [],
+    "feed": [
+      {
+        "postUUID": "b",
+        "userUUID": "uuid",
+        "userName": "name",
+        "userPicture": "url",
+        "timestamp": "time",
+        "message": [
+          [
+            {
+              "text": "blah"
+            },
+            {
+              "reference": "blah"
+            },
+            {
+              "text": "blah"
+            },
+            {
+              "list": "blaj"
+            }
+          ]
+        ],
+        "reply": []
+      }
+    ]
+  },
+
+  "list": {
+    "description": "",
+    "post": {"canPost": "false","message":[]},
+    "feed":{
+      "canViewFeed": "true",
+      "posts": [
+      {
+        "postUUID": "b",
+        "userUUID": "uuid",
+        "userName": "name",
+        "userPicture": "url",
+        "message": [
+          [
+            {
+              "text": "blah"
+            },
+            {
+              "reference": "blah"
+            },
+            {
+              "text": "blah"
+            },
+            {
+              "list": "blaj"
+            }
+          ]
+        ],
+        "reply": {
+          "feed":[{
+            "userUUID": "uuid",
+            "userName": "name",
+            "message": [
+                [
+                {
+                  "text": "blah"
+                },
+                {
+                  "reference": "blah"
+                },
+                {
+                  "text": "blah"
+                },
+                {
+                  "list": "blaj"
+                }
+              ]
+            ]}],
+          "reply":[]
+        }
+      }
+    ],
+    "references":[
+      {
+        "referenceName":"bla",
+        "comments":"trucs",
+        "category":["1","2","3"],
+        "schedule": "time",
+        "priority":"1",
+        "rating": {
+            "user": "10",
+            "qinetic": ""
+          },
+        "experienced":"false"
+      }
+
+    ]},
+
+    "settings": {
+            "display": "false",
+            "invitedAsAdmin": [
+              {
+                "userUUID": "UUID",
+                "userName": "Jean"
+              }
+            ],
+            "invitedToFollow": [
+              {
+                "userUUID": "UUID",
+                "userName": "Jean"
+              }
+            ],
+            "listViewableBy": "all",
+            "feedViewableBy": "all"
+          },
+    "posters":[{"userUUID": "uuid","userName": "name"}],
+    "mentionnedReferences":["ref1", "ref2"],
+    "mentionnedLists":[{"listUUID": "uuid","listName": "truc"}],
+    "mentionnedHashtags":["ff","fdsf"]
+  },
+
+  "reference": {
+    "referenceName":"",
+    "referenceDescription": "",
+    "referencePicture": "url",
+    "referenceAlignPicture":{"x":"0", "y":"0","z":"0"},
+    "rating": {
+            "user": "10",
+            "qinetic": ""
+          },
+    "mainTags":[],
+    "secondaryTags":[],
+    "whereToExperience":[],
+    "associatedLists":[],
+    "mentionnedWithHashtags": [],
+    "feed": [
+      {
+        "postUUID": "b",
+        "userUUID": "uuid",
+        "userName": "name",
+        "userPicture": "url",
+        "timestamp": "time",
+        "message": [
+          [
+            {
+              "text": "blah"
+            },
+            {
+              "reference": "blah"
+            },
+            {
+              "text": "blah"
+            },
+            {
+              "list": "blaj"
+            }
+          ]
+        ]
+      }
+    ],
+    "userEdits":"5",
+    "editsAwaitingVal": "1",
+    "acccuracyOfReference": "70",
+
+    "review":{
+      "referenceName": {
+          "edit":"trucinsteadofbidule",
+          "verdict": "accepted",
+          "suggestion":[{
+            "userUUID":"uuid",
+            "userName":"Paul",
+            "suggestion":"",
+            "upvotes":""
+          }],
+          "acceptedCount":"",
+          "disavowedCount":""
+
+      },
+      "picture":{
+        "edit":{
+          "url":"",
+          "x":"0",
+          "y":"0",
+          "z":"0"
+        },
+          "verdict": "accepted",
+          "suggestion":[{
+            "userUUID":"uuid",
+            "userName":"Paul",
+            "suggestion":"",
+            "upvotes":""
+          }],
+          "acceptedCount":"",
+          "disavowedCount":""
+      },
+      "description": {
+          "edit":"do the diffing in component",
+          "verdict": "accepted",
+          "suggestion":[{
+            "userUUID":"uuid",
+            "userName":"Paul",
+            "suggestion":"",
+            "upvotes":""
+          }],
+          "acceptedCount":"",
+          "disavowedCount":""
+      },
+      "mainTags":{},
+      "secondaryTags":{},
+      "associatedList":{},
+      "whereToExperience":{}
+    }
+  },
+
+
+  "search": {
+    "active": "true",
+    "searchBarSuggestion": [],
+
+    "resultSearchList": {
+      "display": "true",
+      "listsCount": "10",
+      "referencesCount": "10",
+      "sharedReferencesCount": "10",
+      "entries": [
+        {
+          "listUUID": "uuid",
+          "listName": "truc",
+          "listDescription": "name",
+          "referencesCount": "10",
+          "categoryFilters": [],
+          "isFollower": "false",
+          "isFollowing": "true",
+          "hasSharedReference": "true"
+        }
+      ]
+    },
+
+    "resultSearchReference": {
+      "display": "true",
+      "referencesCount": "10",
+      "entries": [
+        {
+          "referenceName": "name",
+          "categories": [],
+          "listDescription": "name",
+          "rating": {
+            "user": "10",
+            "qinetic": ""
+          }
+        }
+      ]
+    },
+
+    "resultSearchUser": {
+      "display": "true",
+      "usersCount": "10",
+      "listsOfUsers": [
+        {
+          "listUUID": "uuid",
+          "listName": "truc",
+          "userUUID": "user",
+          "userName": "name"
+        }
+      ],
+      "entries": [
+        {
+          "userUUID": "uuid",
+          "userName": "name",
+          "userPicture": "url",
+          "following": "true",
+          "follower": "false",
+          "sharedReferences": "true"
+        }
+      ]
+    }
+  }
+
+  }
+
+
+
+
+export const user = (state={}, action) => {
+    return state
+}
+
+export const searchBarTitle = (state="", action) => {
+    return state
+}
+
+export const homeFeed = (state={}, action) => {
+    return state
+}
+
+export const list = (state={}, action) => {
+    return state
+}
+
+export const reference = (state={}, action) => {
+    return state
+}
+
+export const search = (state={}, action) => {
+    return state
+}
+
+/*Define all the actions needed :
+
+LOGGED_IN - API CALL qinetic/login
+"user": {
+    "userUUID": "UUID",
+        "userToken": "abc",
+        "userName": "Paul",
+        "userLists": [
+            {
+                "listUUID": "uuid",
+                "name": "Vienna 1910",
+                "description": "blah",
+                "relation": "admin",
+                "settings": {
+                    "invitedAsAdmin": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "invitedToFollow": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "listViewableBy": "all",
+                    "feedViewableBy": "all"
+                }
+            },
+            {
+                "listUUID": "uuid",
+                "name": "Truc",
+                "description": "blah",
+                "relation": "shared",
+                "settings": {
+                    "display": "false",
+                    "invitedAsAdmin": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "invitedToFollow": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "listViewableBy": "all",
+                    "feedViewableBy": "all"
+                }
+            }
+        ],
+    "following": [
+        {
+            "UUID": "uuid",
+            "name": "Black"
+        }
+    ],
+        "followers": [
+        {
+            "UUID": "uuid",
+            "name": "Black"
+        }
+    ],
+        "blocked": [
+        {
+            "UUID": "uuid",
+            "name": "Black"
+        }
+    ],
+        "inboxCount": "32",
+        "settings": {
+            "userPicture": "url",
+            "pictureAlignment": [
+            "x",
+            "y",
+            "z"
+        ],
+        "postToHF":"everyone"
+    }
+},
+
+UPLOAD_PROFILE_PICTURE
+"userPicture": "url"
+
+ALIGN_PROFILE_PICTURE
+"pictureAlignment": [
+            "x",
+            "y",
+            "z"
+        ]
+
+
+WHO_CAN_POST_HF
+"postToHF":"everyone"
+
+
+CREATE_LIST - API CALL qinetic/create-list
+"userLists": [
+            {
+                "listUUID": "uuid",
+                "name": "Vienna 1910",
+                "description": "blah",
+                "relation": "admin",
+                "settings": {
+                    "invitedAsAdmin": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "invitedToFollow": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "listViewableBy": "all",
+                    "feedViewableBy": "all"
+                }
+            },
+            {
+                "listUUID": "uuid",
+                "name": "Truc",
+                "description": "blah",
+                "relation": "shared",
+                "settings": {
+                    "display": "false",
+                    "invitedAsAdmin": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "invitedToFollow": [
+                        {
+                            "userUUID": "UUID",
+                            "userName": "Jean"
+                        }
+                    ],
+                    "listViewableBy": "all",
+                    "feedViewableBy": "all"
+                }
+            }
+        ]
+
+CHANGE_TITLE_BAR
+"search references / ~lists / #hashtags"
+
+
+
+SEARCH_LIST
+"resultSearchList": {
+    "display": "true",
+    "listsCount": "10",
+    "referencesCount": "10",
+    "sharedReferencesCount": "10",
+    "entries": [
+      {
+        "listUUID": "uuid",
+        "listName": "truc",
+        "listDescription": "name",
+        "referencesCount": "10",
+        "categoryFilters": [],
+        "isFollower": "false",
+        "isFollowing": "true",
+        "hasSharedReference": "true"
+      }
+    ]
+  }
+*/

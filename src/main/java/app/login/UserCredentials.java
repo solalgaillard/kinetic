@@ -1,4 +1,4 @@
-package hello;
+package app.homeFeed;
 
 public class UserCredentials {
     private final String username, password;

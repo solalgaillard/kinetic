@@ -1,4 +1,4 @@
-package hello;
+package app.homeFeed;
 
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
