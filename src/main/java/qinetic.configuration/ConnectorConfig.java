@@ -1,4 +1,4 @@
-package app;
+package qinetic.configuration;
 
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Configuration;

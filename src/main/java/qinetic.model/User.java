@@ -1,14 +1,14 @@
-package app.user;
+package qinetic.model;
 
 import java.util.*;
 
-public class UserModel {
+public class User {
 
     private final String userUUID;
     private final String userToken;
     private final String userName;
     private final String userPicture;
-    private final ArrayList<List> lists;
+    private final ArrayList<ListInfo> lists;
     private final ArrayList<UserRelation> following;
     private final ArrayList<UserRelation> followers;
     private final ArrayList<UserRelation> blocked;
@@ -16,14 +16,14 @@ public class UserModel {
     private final int InboxCount;
 
 
-    public UserModel(){
-        userUUID = "f0e55fb8-7f1b-4360-8d08-5d8c3ae9ca21";
-        userToken = "Solal Gaillard";
+    public User(String userUUID, String userToken){
+        this.userUUID = userUUID;
+        this.userToken = userToken;
         userName = "Solal Gaillard";
         userPicture = "string/string.jpg";
 
         lists = new ArrayList();
-        lists.add(new List());
+        lists.add(new ListInfo());
 
         following = new ArrayList();
         following.add(new UserRelation());
@@ -57,7 +57,7 @@ public class UserModel {
         return userPicture;
     }
 
-    public ArrayList<List> getLists() {
+    public ArrayList<ListInfo> getLists() {
         return lists;
     }
 
@@ -80,7 +80,7 @@ public class UserModel {
     }
 }
 
-class List {
+class ListInfo {
 
     private String listUUID;
     private String listName;
@@ -90,7 +90,7 @@ class List {
     private ListSettings listSettings;
 
 
-    public List() {
+    public ListInfo() {
         listUUID = "truc";
         listName = "Vienna 1910";
         listDescription = "BlahBlahBlah";

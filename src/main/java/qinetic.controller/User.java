@@ -1,10 +1,8 @@
-package app.user;
+package qinetic.controller;
 
-import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.*;
 
 /*
 * Peut utiliser un token ou bien les identifiants pour accéder à la route
@@ -15,10 +13,10 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class User {
 
     @GetMapping
-    public UserModel usermodel () {
-        return new UserModel();
+    public qinetic.model.User usermodel () {
+        return new qinetic.model.User("","");
     }
 }

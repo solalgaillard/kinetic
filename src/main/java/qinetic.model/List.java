@@ -1,8 +1,24 @@
-package app.homeFeed;
+package qinetic.model;
 
-import java.util.*;
+import java.util.ArrayList;
 
-public class HomeFeedModel {
+public class List {
+
+    private final ArrayList<Feed> feed;
+
+    public List() {
+        feed = new ArrayList();
+        Feed aFeed = new Feed();
+        feed.add(aFeed);
+    }
+
+    public ArrayList<Feed> getFeed() {
+        return feed;
+    }
+
+}
+
+class Feed {
 
     private final String postUUID;
     private final String userUUID;
@@ -13,7 +29,7 @@ public class HomeFeedModel {
     private final ArrayList<Message> message;
 
 
-    public HomeFeedModel(){
+    public Feed(){
         postUUID = "truc";
         userUUID = "truc";
         userName = "Solal Gaillard";
@@ -28,18 +44,6 @@ public class HomeFeedModel {
         return postUUID;
     }
 
-    public String getUserUUID() {
-        return userUUID;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserPicture() {
-        return userPicture;
-    }
-
     public String getTimestamp() {
         return timestamp;
     }
@@ -49,15 +53,3 @@ public class HomeFeedModel {
     }
 }
 
-class Message {
-    private final Map<String, String> message;
-
-    public Message() {
-        message = new HashMap<String, String>();
-        message.put("text", "Blah");
-    }
-
-    public Map<String, String> getMessage() {
-        return message;
-    }
-}
