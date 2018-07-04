@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title> </title>
 </head>
 <body>
-<div id="react"></div>
-
 <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
-<script src="dist/bundle.js"></script>
-
+<script>
+    url = '{"url":"'+ window.location.hash + '"}'
+    opener.postMessage(url, 'https://localhost')
+    window.close()
+</script>
 </body>
 </html>
