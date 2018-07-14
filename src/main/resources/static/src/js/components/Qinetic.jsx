@@ -1,13 +1,13 @@
 import React from 'react'
 import {HashRouter, Route } from 'react-router-dom'
-import Login from './Login/Login.jsx'
-import { ChangeImage, Home } from '../redux/Containers.jsx'
-import styles from './app.sass'
+import Login from './login/Login.jsx'
+import { ChangeImage, Home } from './containers.jsx'
+import styles from './qinetic.sass'
 
 
 
 const App = () =>
-    <main className={styles.App}>
+    <main className={styles.Qinetic}>
         <ChangeImage />
         <HashRouter>
             <div>

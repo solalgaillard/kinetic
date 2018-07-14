@@ -1,34 +1,74 @@
 import React from 'react'
 import styles from './login.sass'
+import {domain, auth0Cred} from '../../config.js'
 
-var webAuth = new auth0.WebAuth({
-    domain:       'kineticexpress.auth0.com',
-    clientID:     '7bug4gdhtEeo77gXDz0dBl1KBjVr5I1O',
-})
+const webAuth = new auth0.WebAuth({domain: auth0Cred.domain, clientID: auth0Cred.clientID})
 
-function socialOAuth2(webAuth, serviceProvider) {
+const socialOAuth2 = (webAuth, serviceProvider) => {
     webAuth.popup.authorize({
         connection: serviceProvider,
         display:'popup',
-        responseType: 'token',
+        audience:'https://localhost',
+        responseType: 'code',
+        scope: 'openid email offline_access',
+        access_type: 'offline',
         redirectUri: 'https://localhost/social-login-redirect.html'
-    }, function(err, authResult) {
-        //do something
-    })
-}
+        },
+        (err, authResult) => console.log(err))}
 
-/*FOR LOGIN NOT GOOD PLACE*/
-window.addEventListener("message", receiveMessage, false)
 
-function receiveMessage(event)
-{
-    if (event.origin !== "http://localhost/social-login-redirect.html")
-        return
 
-    console.log(event.data)
-}/*
+const receiveToken = (event) => {
+    if (event.origin !== domain) return
 
-webAuth.parseHash(window.location.hash, function(err, data) {*/
+    webAuth.parseHash({ hash: JSON.parse(event.data).url },
+                        (err, authResult) => {
+                            if (err) return console.log(err)
+
+                            console.log(authResult)
+
+                            localStorage.setItem('accessToken', authResult.accessToken);
+
+                            })}
+
+window.addEventListener("message", receiveToken, false)
+
+
+
+/*
+
+
+Get access token
+
+
+https://kineticexpress.auth0.com/authorize?response_type=code&client_id=7bug4gdhtEeo77gXDz0dBl1KBjVr5I1O&connection=facebook&redirect_uri=https://localhost/social-login-redirect.html&access_type=offline
+
+
+https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=2010760015905060&client_secret=4d22ef1cf7ef8886484d77953dea5fd8&fb_exchange_token=EAAckxox6ASQBAOjKVZA3oJ3cO5w52nzaHdVNbn5KcVrcFmNVIE6O9qAb5gRb3eqqRoWFz5dDjIuUv4xUl4Q2FxcxPyddFTenIsDP1xaPevY4UDWsoZBggLiXYXQ0TtnZCZCTeyyZCFkXo6cVhUrzPd0ZBwx2rUZC4jZChHBg6A5kS9PN61QZC6yJZB3yihnFwVpNoZD
+
+https://kineticexpress.auth0.com/authorize?response_type=token|id_token&client_id=7bug4gdhtEeo77gXDz0dBl1KBjVr5I1O&connection=google-oauth2&redirect_uri=https://localhost/social-login-redirect.html&access_type=offline
+
+https://kineticexpress.auth0.com/authorize?response_type=code&client_id=7bug4gdhtEeo77gXDz0dBl1KBjVr5I1O&connection=google-oauth2&redirect_uri=https://localhost/social-login-redirect.html&access_type=offline&prompt=consent
+
+$ curl --request POST \
+>   --url 'https://kineticexpress.auth0.com/oauth/token' \
+>   --header 'content-type: application/json' \
+>   --data '{"grant_type":"authorization_code","client_id": "7bug4gdhtEeo77gXDz0dBl1KBjVr5I1O","client_secret": "A9_2PNqixCjxJ7hlGIJn8licpeiOX0-UTRiHcV7LNuCq3dPtHhYN9-_yQJ670Afc","code": "B6p4qFvKMIxEtjNr","redirect_uri": "https://localhost/social-login-redirect.html"}'
+
+
+
+
+https://kineticexpress.auth0.com/authorize?response_type=token&client_id=7bug4gdhtEeo77gXDz0dBl1KBjVr5I1O&connection=google-oauth2&redirect_uri=https://localhost/social-login-redirect.html&access_type=offline&prompt=consent
+
+Make class out of login, move event handler in mount remove in unmount
+
+If token, send to authenticate with GET,
+
+Authenticate with Post is different and provides with a basic answer
+
+Change token response_type to code as to refresh later on
+
+*/
 
 
 const Login = ({googleLogin = () => socialOAuth2(webAuth, 'google-oauth2'),

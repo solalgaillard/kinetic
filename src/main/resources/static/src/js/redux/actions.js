@@ -1,7 +1,5 @@
 import C from './constants'
 
-// Will be useful in the future for making calls to the dispatcher
-
 class Api {
     static getAll() {
         return fetch('https://localhost/feed').then(response => {

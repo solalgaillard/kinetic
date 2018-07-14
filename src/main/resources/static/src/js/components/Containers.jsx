@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
-import { BackgroundSlideshow } from '../Components/backgroundSlideshow/BackgroundSlideshow.jsx'
-import { Feed } from '../Components/Home/Home.jsx'
-import {loadFeed} from './actions.js'
+import { BackgroundSlideshow } from './backgroundSlideshow/BackgroundSlideshow.jsx'
+import { Feed } from './feed/Feed.jsx'
+import {loadFeed} from '../redux/actions.js'
 
 
 export const ChangeImage = connect (
