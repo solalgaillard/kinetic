@@ -12,7 +12,6 @@ public class HomeFeed {
 
     private final ArrayList<Message> message;
 
-
     public HomeFeed(String userID){
         postUUID = "truc";
         userUUID = userID;
@@ -27,23 +26,18 @@ public class HomeFeed {
     public String getPostUUID() {
         return postUUID;
     }
-
     public String getUserUUID() {
         return userUUID;
     }
-
     public String getUserName() {
         return userName;
     }
-
     public String getUserPicture() {
         return userPicture;
     }
-
     public String getTimestamp() {
         return timestamp;
     }
-
     public ArrayList<Message> getMessage() {
         return message;
     }

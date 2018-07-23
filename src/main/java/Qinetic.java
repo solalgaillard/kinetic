@@ -1,6 +1,6 @@
 package qinetic;
 
-import qinetic.configuration.ConnectorConfig;
+//import qinetic.configuration.ConnectorConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

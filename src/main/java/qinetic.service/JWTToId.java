@@ -34,9 +34,6 @@ public class JWTToId {
                 .exchange(url, HttpMethod.GET, entity, TokToIdResponse.class);
 
 
-        System.out.println(JWT);
-        System.out.println(restResponse.getBody().getUserId());
-
 
         return restResponse.getBody().getUserId();
 

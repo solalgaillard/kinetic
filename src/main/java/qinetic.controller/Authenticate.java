@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.*;
@@ -16,35 +15,50 @@ import org.springframework.beans.factory.annotation.*;
 public class Authenticate {
 
     @Autowired
-    qinetic.service.AuthenticateSer authenticateProcessing;
-
+    qinetic.service.AuthenticateAuth0 authenticateProcessing;
     @Autowired
-    qinetic.service.ParseAndVerifyJWT verifyToken;
+    qinetic.model.Auth0Response responseAuth0;
+    @Autowired
+    qinetic.service.ParseAndVerifyJWT parseToken;
+    @Autowired
+    qinetic.repository.RefreshTokensDAO refreshTokensDAO;
+
+    private qinetic.model.User getUserInfo(String id, String token) {
+        return new qinetic.model.User(id, token);
+    }
 
 
     @RequestMapping(method=RequestMethod.POST, value="/authenticate", headers="Connection-Type=Password")
-    public @ResponseBody ResponseEntity<String> userInfo(@RequestBody AuthJSONToObj credentials) {
+    public @ResponseBody qinetic.model.User userInfo(@RequestBody AuthJSONToObj credentials) {
 
-        String token = authenticateProcessing.getTokenFromCred(credentials.getUsername(),credentials.getPassword());
+        responseAuth0 = authenticateProcessing.getTokenFromCred(credentials.getUsername(),credentials.getPassword());
+
+        qinetic.model.RefreshTokens refreshTokens = new qinetic.model.RefreshTokens();
+
+        String token = responseAuth0.getAccessToken();
+
+        refreshTokens.setAccessToken(token);
+
+        refreshTokens.setRefreshToken(responseAuth0.getRefreshToken());
 
 
-       boolean isTokenValid = verifyToken.verify(token);
+        refreshTokensDAO.save(refreshTokens);
 
-       System.out.println(isTokenValid);
+        return getUserInfo(parseToken.getSub(token),token);
 
-
-
-        //qinetic.model.User(toke);
-
-        HttpHeaders responseHeaders = new HttpHeaders();
-        return new ResponseEntity<String>(token, responseHeaders, HttpStatus.OK);
     }
-/*
-    @RequestMapping(method=RequestMethod.POST, value="/authenticate", headers="Return-Type=FooExtra")
-    public @ResponseBody qinetic.model.User UserInfoExtra(@RequestBody Code code) {
-        return new qinetic.service.Authenticate("test.account@signup.com","Solgai#06").connect();
+
+    @RequestMapping(method=RequestMethod.POST, value="/authenticate", headers="Connection-Type=Social")
+    public @ResponseBody qinetic.model.User userInfo(@RequestBody Code socialCred) {
+
+        responseAuth0 = authenticateProcessing.getTokenFromSocial(socialCred.getCode());
+
+        String token = responseAuth0.getAccessToken();
+
+        return getUserInfo(parseToken.getSub(token),token);
+
     }
-*/
+
 
 }
 
@@ -69,9 +83,12 @@ class AuthJSONToObj {
 
 
 class Code {
-    private final String code;
+    private String code;
 
-    public Code(String code) {
+    public Code() {
+    }
+
+    public void setCode(String code) {
         this.code = code;
     }
 

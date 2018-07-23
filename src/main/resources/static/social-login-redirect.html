@@ -7,9 +7,10 @@
 <body>
 <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
 <script>
-    url = '{"url":"'+ window.location.hash + '"}'
+    url = '{"url":"'+ window.location + '"}'
+
     opener.postMessage(url, 'https://localhost')
-    //window.close()
+    window.close()
 </script>
 </body>
 </html>
