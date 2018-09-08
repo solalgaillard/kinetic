@@ -16,7 +16,7 @@ public class HomeFeed {
         postUUID = "truc";
         userUUID = userID;
         userName = "Solal Gaillard";
-        userPicture = "string/string.jpg";
+        userPicture = "https://twistedsifter.files.wordpress.com/2012/09/trippy-profile-pic-portrait-head-on-and-from-side-angle.jpg?w=800&h=700";
         timestamp = "10101874";
         message = new ArrayList();
         message.add(new Message());

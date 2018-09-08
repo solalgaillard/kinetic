@@ -7,7 +7,6 @@ public class User {
     private final String userUUID;
     private final String userToken;
     private final String userName;
-    private final String userPicture;
     private final ArrayList<ListInfo> lists;
     private final ArrayList<UserRelation> following;
     private final ArrayList<UserRelation> followers;
@@ -20,7 +19,6 @@ public class User {
         this.userUUID = userUUID;
         this.userToken = userToken;
         userName = "Solal Gaillard";
-        userPicture = "string/string.jpg";
 
         lists = new ArrayList();
         lists.add(new ListInfo());
@@ -51,10 +49,6 @@ public class User {
 
     public String getUserName() {
         return userName;
-    }
-
-    public String getUserPicture() {
-        return userPicture;
     }
 
     public ArrayList<ListInfo> getLists() {
@@ -182,7 +176,7 @@ class Settings {
     private int[] pictureAlignment;
 
     public Settings() {
-        userPicture = "maching";
+        userPicture = "https://twistedsifter.files.wordpress.com/2012/09/trippy-profile-pic-portrait-head-on-and-from-side-angle.jpg?w=800&h=700";
         pictureAlignment = new int[]{0,1,2};
     }
 

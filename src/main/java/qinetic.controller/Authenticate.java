@@ -59,6 +59,16 @@ public class Authenticate {
 
     }
 
+    @RequestMapping(method=RequestMethod.POST, value="/authenticate", headers="Connection-Type=Token")
+    public @ResponseBody qinetic.model.User userInfo(@RequestBody Token tokenCred) {
+
+        String token = tokenCred.getToken();
+
+        return getUserInfo(parseToken.getSub(token),token);
+
+    }
+
+
 
 }
 
@@ -94,6 +104,22 @@ class Code {
 
     public String getCode() {
         return code;
+    }
+
+}
+
+class Token {
+    private String token;
+
+    public Token() {
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
     }
 
 }

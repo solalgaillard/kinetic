@@ -1,3 +1,4 @@
+import { connect } from "react-redux"
 import React, { PropTypes, Component } from 'react'
 import cx from 'classnames';
 import styles from './background-slideshow.sass'
@@ -33,14 +34,14 @@ export class BackgroundSlideshow extends Component {
 
         return (
             <aside>
-            <div key={count} className={cx(styles['background-slideshow'] , 'back')}>
-                {count > 0 && <style> {`\
+                <div key={count} className={cx(styles['background-slideshow'] , 'back')}>
+                    {count > 0 && <style> {`\
                                             .back::before{\
                                             background-image: url(${img[prev].url});\
                                             }\
                                         `}</style>
-                }
-                <style> {`\
+                    }
+                    <style> {`\
                                             .back::after{\
                                             animation: fade-in 10s forwards;\
                                             background-image: url(${img[next].url});\
@@ -49,12 +50,21 @@ export class BackgroundSlideshow extends Component {
 
 
 
-            </div>
-            <div className={styles.gradient}></div>
+                </div>
+                <div className={styles.gradient}></div>
             </aside>
-)
+        )
+
+    }
+    /* CSS from gradient::before and gradient will dynamically be changed after image analysis but it is static as is, the values will be passed */
 
 }
-/* CSS from gradient::before and gradient will dynamically be changed after image analysis but it is static as is, the values will be passed */
 
-}
+
+export const BackgroundSlideShowContainer = connect (
+    state =>
+        ({
+            img: state.backgroundImages
+        }),
+    null
+)(BackgroundSlideshow)
