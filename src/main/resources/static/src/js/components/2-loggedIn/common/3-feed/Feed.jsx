@@ -16,9 +16,9 @@ export class FeedPre extends Component {
 
     render() {
 
-        const {feed} = this.props
+        const {feed, styleName} = this.props
         return (
-            <div className={styles.feed}>
+            <div className={cx(styles.feed, styleName)}>
                 <textarea>Post To Feed</textarea>
                 <main>
                     {feed.map( (post, i) =>
