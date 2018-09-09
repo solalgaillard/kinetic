@@ -1,20 +1,21 @@
 package qinetic.model;
 
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Message {
-    private final Map<String, String> message;
+    private final ArrayList<Object> message;
 
     public Message() {
-        message = new HashMap<String, String>();
-        message.put("text", "Blah");
-        message.put("reference", "Bouah ah");
-        message.put("text", "Bouah ah");
-        message.put("list", "bidule");
+        message = new ArrayList<Object>();
+        HashMap<String, String> tmp = new HashMap<String, String>();
+        tmp.put("text", "Blah");
+        message.add("texttest");
+        message.add(tmp);
     }
 
-    public Map<String, String> getMessage() {
+    public ArrayList<Object> getMessage() {
         return message;
     }
 }

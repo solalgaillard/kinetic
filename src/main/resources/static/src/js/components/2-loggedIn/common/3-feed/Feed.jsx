@@ -26,7 +26,15 @@ export class FeedPre extends Component {
                             <img src={post.userPicture}/>
                             <h1>{post.userName}</h1>
                             <p>
-                                {post.message.map( (description, z) => <span key={z}>{description.text}</span>)}
+                                {post.message.map( (message, z) =>
+                                    message.map ( (partMessage, z) =>
+                                    (typeof partMessage === 'object') ?
+                                            <span className={Object.keys(partMessage)[0]}
+                                                  key={z}>{partMessage[Object.keys(partMessage)[0]]}</span>
+                                            :
+                                            partMessage
+                                    )
+                                )}
                             </p>
 
 

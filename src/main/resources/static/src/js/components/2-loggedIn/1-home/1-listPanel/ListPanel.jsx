@@ -4,26 +4,53 @@ import styles from './list-panel.sass'
 import {connect} from "react-redux";
 
 
-const ListPanelPre = ({user, styleName}) =>
+const ListPanelPre = ({lists, styleName}) =>
     <div className={cx(styles['list-panel'], styleName)}>
         <h3>user's list</h3>
         <hr />
             <ul>
-                {user.lists.map( (list, i) =>
+                {lists.admin.map( (list, i) =>
                     <li key={i}>
-                        {~`${user.lists.listName}`}
+                        {`~${list.listName}`}
                         <img src='src/img/common/expand-icon.png'/>
                         <hr />
                     </li>
                     )
                 }
             </ul>
+        <hr />
+        <h3>shared lists</h3>
+        <ul>
+            {lists.shared.map( (list, i) =>
+                <li key={i}>
+                    {`~${list.listName}`}
+                    <img src='src/img/common/expand-icon.png'/>
+                    <hr />
+                </li>
+            )
+            }
+        </ul>
+        <hr />
+        <h3>followed lists</h3>
+
+        <ul>
+            {lists.shared.map( (list, i) =>
+                <li key={i}>
+                    {`~${list.listName}`}
+                    <img src='src/img/common/expand-icon.png'/>
+                    <hr />
+                </li>
+            )
+            }
+        </ul>
+        <hr />
+        <h3>create list</h3>
     </div>
 
 export const ListPanel = connect (
     state =>
         ({
-            user: state.user
+            lists: state.user.lists
         }),
     null
 )(ListPanelPre)

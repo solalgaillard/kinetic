@@ -6,7 +6,7 @@ import { Profile } from '../common/1-profile/Profile.jsx'
 import { ListPanel } from './1-listPanel/ListPanel.jsx'
 import SearchAndTitleBar from '../common/2-Search&TitleBar/searchAndTitleBar.jsx'
 import { Feed } from '../common/3-feed/Feed.jsx'
-import OtherUsersPanel from './3-otherUsersPanel/OtherUsersPanel.jsx'
+import { OtherUsersPanel } from './3-otherUsersPanel/OtherUsersPanel.jsx'
 import InboxCounter from '../common/4-inboxCounter/InboxCounter.jsx'
 
 

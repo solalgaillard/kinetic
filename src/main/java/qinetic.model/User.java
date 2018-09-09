@@ -7,7 +7,7 @@ public class User {
     private final String userUUID;
     private final String userToken;
     private final String userName;
-    private final ArrayList<ListInfo> lists;
+    private final HashMap<String, ArrayList> lists;
     private final ArrayList<UserRelation> following;
     private final ArrayList<UserRelation> followers;
     private final ArrayList<UserRelation> blocked;
@@ -20,8 +20,14 @@ public class User {
         this.userToken = userToken;
         userName = "Solal Gaillard";
 
-        lists = new ArrayList();
-        lists.add(new ListInfo());
+        lists = new HashMap<String, ArrayList>();
+
+        ArrayList<ListInfo> listDetails  = new ArrayList();
+        listDetails.add(new ListInfo());
+
+        lists.put("admin", listDetails);
+        lists.put("shared", listDetails);
+        lists.put("followed", listDetails);
 
         following = new ArrayList();
         following.add(new UserRelation());
@@ -51,7 +57,7 @@ public class User {
         return userName;
     }
 
-    public ArrayList<ListInfo> getLists() {
+    public HashMap<String, ArrayList> getLists() {
         return lists;
     }
 
@@ -79,8 +85,7 @@ class ListInfo {
     private String listUUID;
     private String listName;
     private String listDescription;
-    private String listRelation;
-
+    private Date listCreated;
     private ListSettings listSettings;
 
 
@@ -88,7 +93,6 @@ class ListInfo {
         listUUID = "truc";
         listName = "Vienna 1910";
         listDescription = "BlahBlahBlah";
-        listRelation = "admin";
 
         listSettings = new ListSettings();
     }
@@ -105,8 +109,8 @@ class ListInfo {
         return listDescription;
     }
 
-    public String getListRelation() {
-        return listRelation;
+    public Date getListCreated() {
+        return listCreated;
     }
 
     public ListSettings getListSettings() {

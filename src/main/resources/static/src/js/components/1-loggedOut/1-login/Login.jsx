@@ -2,12 +2,9 @@ import React, { PropTypes, Component } from 'react'
 import { Redirect } from 'react-router'
 import styles from './login.sass'
 import {domain, auth0Cred} from '../../../config.js'
-
+import { CreateAccount } from './2-createAccount/CreateAccount.jsx'
 import { connect } from "react-redux"
 import { loadUser } from '../../../reduxStore/actions'
-
-
-
 
 
 
@@ -18,6 +15,7 @@ class LoginPre extends Component {
         super(props)
         this.webAuth = new auth0.WebAuth({domain: auth0Cred.domain, clientID: auth0Cred.clientID})
         const {getUser, user} = this.props
+        this.state = {createAccount: false, forgotPassword: false}
         var tokenLocalStore = localStorage.getItem('accessToken')
         if (tokenLocalStore && !user)
             getUser(JSON.stringify({token: tokenLocalStore}), 'Token')
@@ -77,31 +75,44 @@ class LoginPre extends Component {
     }
 
     submit = e => {
-        console.log('it happened')
         const {getUser} = this.props
         const{_email,_password}=this.refs
         e.preventDefault()
         getUser(JSON.stringify({username:_email.value,password:_password.value}), 'Password')
     }
 
+    toggleComponent = (key) => {
+        this.state[key] ? this.setState({[key]: false}) : this.setState({[key]: true})
+    }
+
 
     render()  {
         const {user} = this.props
+        const {createAccount} = this.state
 
         return  (user) ?
             (<Redirect to="/home" />) :
-            (<form className={styles.login} onSubmit={this.submit}>
-                <input type="text" name="email" ref="_email" />
-                <input type="password" name="password" ref="_password" />
-                <button type="button">forgot your password?</button>
+            (<section className={styles.login}>
+                { !createAccount ?
+                <form onSubmit={this.submit}>
+                    <input type="text" name="email" ref="_email" placeholder="Email" />
+                    <input type="password" name="password" ref="_password" placeholder="Password" />
+                    <button type="button">forgot your password?</button>
+                    <div>
+                        <input type="submit" value="log in" />
+                        <p>or</p>
+                        <button onClick={() => this.socialOAuth2(this.webAuth, 'google-oauth2')} type="button">login in with Google</button>
+                        <button onClick={() => this.socialOAuth2(this.webAuth, 'facebook')} type="button">login in with Facebook</button>
+                    </div>
+                    <button onClick={() => this.toggleComponent('createAccount')} type="button">create account</button>
+                </form>
+                :
                 <div>
-                    <input type="submit" value="log in" />
-                    <p>or</p>
-                    <button onClick={() => this.socialOAuth2(this.webAuth, 'google-oauth2')} type="button">login in with Google</button>
-                    <button onClick={() => this.socialOAuth2(this.webAuth, 'facebook')} type="button">login in with Facebook</button>
+                    <button onClick={() => this.toggleComponent('createAccount')} >Back to Login</button>
+                    <CreateAccount backToLogin={this.toggleComponent} />
                 </div>
-                <button type="button">create account</button>
-            </form>
+                }
+            </section>
         )
 
     }

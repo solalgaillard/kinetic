@@ -1,6 +1,8 @@
 package qinetic.model;
 
+import java.util.Map;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeFeed {
 
@@ -10,7 +12,7 @@ public class HomeFeed {
     private final String userPicture;
     private final String timestamp;
 
-    private final ArrayList<Message> message;
+    private final ArrayList<ArrayList> message;
 
     public HomeFeed(String userID){
         postUUID = "truc";
@@ -19,8 +21,13 @@ public class HomeFeed {
         userPicture = "https://twistedsifter.files.wordpress.com/2012/09/trippy-profile-pic-portrait-head-on-and-from-side-angle.jpg?w=800&h=700";
         timestamp = "10101874";
         message = new ArrayList();
-        message.add(new Message());
-        message.add(new Message());
+        ArrayList<Object> subMessage = new ArrayList();
+        HashMap<String, String> tmp = new HashMap<String, String>();
+        tmp.put("text", "Blah");
+        subMessage.add("texttest");
+        subMessage.add(tmp);
+        message.add(subMessage);
+        message.add(subMessage);
     }
 
     public String getPostUUID() {
@@ -38,7 +45,7 @@ public class HomeFeed {
     public String getTimestamp() {
         return timestamp;
     }
-    public ArrayList<Message> getMessage() {
+    public ArrayList<ArrayList> getMessage() {
         return message;
     }
 }
