@@ -42,9 +42,26 @@ export const user = (state=null, action) => {
 
 export const feed = (state=[], action) => {
     switch (action.type) {
+        case C.ADD_TO_FEED:
+            return [
+                feedItem({}, action),
+                ...state
+            ]
         case C.LOAD_FEED:
             return action.feed
         default:
             return state
     }
 }
+
+
+export const feedItem = (state={}, action) => {
+    switch (action.type) {
+        case C.ADD_TO_FEED:
+            console.log(action)
+            return action.feedItem
+        default:
+            return state
+    }
+}
+

@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import {loadFeed} from '../../../../reduxStore/actions'
+import {loadFeed, addToFeed} from '../../../../reduxStore/actions'
 import React, {Component} from 'react'
 import cx from "classnames";
 import styles from './feed.sass'
@@ -10,16 +10,29 @@ export class FeedPre extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {typing: false}
         const {loadFeedItems} = this.props
         loadFeedItems()
     }
 
+    showIcon = () => {
+        this.setState({typing: true});
+    }
+
+    hideIcon = () => {
+        //this.setState({typing: false});
+    }
+
     render() {
 
-        const {feed, styleName} = this.props
+        const {feed, styleName, writeFeedItem} = this.props
+        const {typing} = this.state
         return (
             <div className={cx(styles.feed, styleName)}>
-                <textarea>Post To Feed</textarea>
+                <div className={styles['write-box']}>
+                    <textarea onFocus={() => this.showIcon()} onBlur={() => this.hideIcon()} ref="_post" >Post To Feed</textarea>
+                    {typing && <img onClick={() => writeFeedItem(JSON.stringify([this.refs._post.value]))} src="src/img/common/write-icon.png" />}
+                </div>
                 <main>
                     {feed.map( (post, i) =>
                         <div key={i}>
@@ -27,13 +40,11 @@ export class FeedPre extends Component {
                             <h1>{post.userName}</h1>
                             <p>
                                 {post.message.map( (message, z) =>
-                                    message.map ( (partMessage, z) =>
-                                    (typeof partMessage === 'object') ?
-                                            <span className={Object.keys(partMessage)[0]}
-                                                  key={z}>{partMessage[Object.keys(partMessage)[0]]}</span>
+                                    (typeof message === 'object') ?
+                                            <span className={Object.keys(message)[0]}
+                                                  key={z}>{message[Object.keys(message)[0]]}</span>
                                             :
-                                            partMessage
-                                    )
+                                            message
                                 )}
                             </p>
 
@@ -57,6 +68,9 @@ export const Feed = connect (
     dispatch => ({
         loadFeedItems() {
             dispatch(loadFeed())
+        },
+        writeFeedItem(post) {
+            dispatch(addToFeed(post))
         }
         })
 )(FeedPre)

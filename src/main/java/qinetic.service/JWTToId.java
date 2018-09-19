@@ -13,11 +13,9 @@ public class JWTToId {
 
     private final String USER_AGENT = "Qinetic/1.0", DOMAIN = "https://kineticexpress.auth0.com";
 
-    public JWTToId() {
-    }
+    private TokToIdResponse convertedToken;
 
-
-    public String convertToId(String JWT) {
+    public JWTToId(String JWT) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -34,8 +32,29 @@ public class JWTToId {
                 .exchange(url, HttpMethod.GET, entity, TokToIdResponse.class);
 
 
+        convertedToken = restResponse.getBody();
 
-        return restResponse.getBody().getUserId();
+
+
+
+    }
+
+
+    public String getUser() {
+
+        return convertedToken.getUserId();
+
+    }
+
+    public String getPic() {
+
+        return convertedToken.getPicture();
+
+    }
+
+    public String getUsername() {
+
+        return convertedToken.getUsername();
 
     }
 
@@ -46,11 +65,25 @@ class TokToIdResponse {
     @JsonProperty("sub")
     private String userId;
 
+    @JsonProperty("picture")
+    private String picture;
+
+    @JsonProperty("name")
+    private String username;
+
+
     public TokToIdResponse(){
     }
 
     public String getUserId() {
-        System.out.println(this.userId);
         return userId;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

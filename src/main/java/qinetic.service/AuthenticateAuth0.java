@@ -44,7 +44,7 @@ public class AuthenticateAuth0 {
                 "\"username\": \"" + email + "\", " +
                 "\"password\": \"" + password +"\", " +
                 "\"audience\": \"" + this.auth0Config.getAUDIENCE() + "\", "+
-                "\"scope\": \"openid email offline_access\", "+
+                "\"scope\": \"openid profile email offline_access\", "+
                 "\"client_id\": \"" + this.auth0Config.getCLIENT_ID() + "\", "+
                 "\"client_secret\": \"" + this.auth0Config.getCLIENT_SECRET() + "\""+
                 "}";

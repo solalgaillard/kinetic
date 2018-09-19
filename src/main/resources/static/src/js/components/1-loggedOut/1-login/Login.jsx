@@ -76,7 +76,7 @@ class LoginPre extends Component {
 
     submit = e => {
         const {getUser} = this.props
-        const{_email,_password}=this.refs
+        const{_email,_password} = this.refs
         e.preventDefault()
         getUser(JSON.stringify({username:_email.value,password:_password.value}), 'Password')
     }

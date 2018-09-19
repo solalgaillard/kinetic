@@ -10,7 +10,7 @@ import ApiCalls from '../utils/ApiCalls'
 
 export function loadUser(json, connectionType) {
     return function(dispatch) {
-        return ApiCalls.postAll('https://localhost/authenticate', json, connectionType)
+        return ApiCalls.postAll('/authenticate', json, connectionType)
             .then(response => {
                 if (response.ok)
                     return response.json()
@@ -52,13 +52,36 @@ function loadFeedSuccess(feed) {
 
 export function loadFeed() {
     return function(dispatch) {
-        return ApiCalls.getAll('https://localhost/feed')
+        return ApiCalls.getAll('/feed')
             .then(response => {
                 if (response.ok)
                     return response.json()
             })
             .then(data => {
                 dispatch(loadFeedSuccess(data))
+                //dispatch(loadAuthenticationStatus())
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+}
+
+function addToFeedSuccess(feedItem) {
+    return {type: C.ADD_TO_FEED, feedItem};
+}
+
+export function addToFeed(post) {
+    console.log(post)
+    return function(dispatch) {
+        return ApiCalls.postAll('/feed', post)
+            .then(response => {
+                if (response.ok)
+                    return response.json()
+            })
+            .then(data => {
+                console.log(data)
+                dispatch(addToFeedSuccess(data))
                 //dispatch(loadAuthenticationStatus())
             })
             .catch(error => {

@@ -7,6 +7,7 @@ public class User {
     private final String userUUID;
     private final String userToken;
     private final String userName;
+    private final String feedID;
     private final HashMap<String, ArrayList> lists;
     private final ArrayList<UserRelation> following;
     private final ArrayList<UserRelation> followers;
@@ -19,6 +20,7 @@ public class User {
         this.userUUID = userUUID;
         this.userToken = userToken;
         userName = "Solal Gaillard";
+        feedID = "quelque chose";
 
         lists = new HashMap<String, ArrayList>();
 
@@ -47,6 +49,10 @@ public class User {
 
     public String getUserUUID() {
         return userUUID;
+    }
+
+    public String getFeedID() {
+        return feedID;
     }
 
     public String getUserToken() {

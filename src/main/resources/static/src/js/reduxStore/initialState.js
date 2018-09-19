@@ -1,37 +1,37 @@
 const initialState = {
     backgroundImages: [
         {
-            url: "src/img/BackgroundImages/twombly.jpg",
+            url: "src/img/backgroundImages/twombly.jpg",
             title: "Twombly",
             dateUploaded:""
         },
         {
-            url: "src/img/BackgroundImages/basquiat.jpg",
+            url: "src/img/backgroundImages/basquiat.jpg",
             title: "Basquiat",
             dateUploaded:""
         },
         {
-            url: "src/img/BackgroundImages/ernst.jpg",
+            url: "src/img/backgroundImages/ernst.jpg",
             title: "Ernst",
             dateUploaded:""
         },
         {
-            url: "src/img/BackgroundImages/kandinsky.jpg",
+            url: "src/img/backgroundImages/kandinsky.jpg",
             title: "Kandinsky",
             dateUploaded:""
         },
         {
-            url: "src/img/BackgroundImages/magritte.jpg",
+            url: "src/img/backgroundImages/magritte.jpg",
             title: "Magritte",
             dateUploaded:""
         },
         {
-            url: "src/img/BackgroundImages/miro.jpg",
+            url: "src/img/backgroundImages/miro.jpg",
             title: "Miro",
             dateUploaded:""
         },
         {
-            url: "src/img/BackgroundImages/tarkovsky.jpg",
+            url: "src/img/backgroundImages/tarkovsky.jpg",
             title: "Tarkovsky",
             dateUploaded:""
         }

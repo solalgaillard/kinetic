@@ -12,7 +12,10 @@ public class HomeFeed {
     private final String userPicture;
     private final String timestamp;
 
-    private final ArrayList<ArrayList> message;
+    private final ArrayList<Object> message;
+
+    //Ici, il faut prendre le user id et regarder pour récupérer le feedID
+
 
     public HomeFeed(String userID){
         postUUID = "truc";
@@ -21,13 +24,13 @@ public class HomeFeed {
         userPicture = "https://twistedsifter.files.wordpress.com/2012/09/trippy-profile-pic-portrait-head-on-and-from-side-angle.jpg?w=800&h=700";
         timestamp = "10101874";
         message = new ArrayList();
-        ArrayList<Object> subMessage = new ArrayList();
+        //ArrayList<Object> subMessage = new ArrayList();
         HashMap<String, String> tmp = new HashMap<String, String>();
         tmp.put("text", "Blah");
-        subMessage.add("texttest");
-        subMessage.add(tmp);
-        message.add(subMessage);
-        message.add(subMessage);
+        message.add("texttest");
+        message.add(tmp);
+        //message.add(subMessage);
+        //message.add(subMessage);
     }
 
     public String getPostUUID() {
@@ -45,7 +48,7 @@ public class HomeFeed {
     public String getTimestamp() {
         return timestamp;
     }
-    public ArrayList<ArrayList> getMessage() {
+    public ArrayList<Object> getMessage() {
         return message;
     }
 }
